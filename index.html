@@ -76,38 +76,14 @@ label.fld{display:block;font-size:12.5px;font-weight:600;color:var(--muted);marg
 .save-state{font-size:12.5px;color:var(--muted);margin-left:auto}
 .save-state.ok::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--ok);margin-right:6px}
 
-/* ---------- editor ---------- */
-.edit-grid{display:grid;grid-template-columns:minmax(0,620px) minmax(0,1fr);gap:16px;max-width:1500px;margin:0 auto;padding:16px 20px 60px;align-items:start}
-.pane-preview{position:sticky;top:76px}
-.pane-preview .card{display:flex;flex-direction:column;max-height:calc(100vh - 92px)}
-.pv-bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line)}
-.pv-wrap{overflow:auto;padding:12px;background:#E3E8F1;border-radius:0 0 var(--r) var(--r);scrollbar-gutter:stable;flex:1;min-height:200px}
-.pv-wrap canvas{display:block;width:100%;height:auto;background:#fff;box-shadow:0 4px 18px rgba(20,32,60,.18);border-radius:3px}
-.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 12px}
+/* ---------- editor : แก้ไขบนรูปรายงานโดยตรง ---------- */
+@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.edit-wrap{max-width:1200px;margin:0 auto;padding:16px 20px 120px}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 12px;align-items:end}
 .info-grid .full{grid-column:1/-1}
 details.more{margin-top:10px;border-top:1px dashed var(--line);padding-top:8px}
 details.more summary{cursor:pointer;color:var(--navy);font-weight:600;font-size:13.5px}
 details.more .info-grid{margin-top:10px}
-
-.sec{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--c);border-radius:var(--r);margin-bottom:14px;box-shadow:0 1px 2px rgba(20,32,60,.05);animation:rise .3s ease-out both}
-@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.sec-head{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;padding:12px 14px 6px}
-.sec-no{font-weight:700;color:#fff;background:var(--c);padding:3px 13px;border-radius:999px;font-size:13px;white-space:nowrap}
-.sec-tools{margin-left:auto;display:flex;gap:2px}
-.tag{font-size:12px;color:#8a5a00;background:#FFF3CF;border-radius:6px;padding:2px 8px}
-.sec-meta{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) minmax(0,1fr);gap:8px;padding:4px 14px 8px}
-.sec-meta .fld{margin:0 0 2px}
-.sw{display:flex;gap:6px;align-items:center;padding:0 14px 8px;flex-wrap:wrap}
-.sw .dot{width:20px;height:20px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px var(--line2);cursor:pointer;padding:0;transition:transform .15s}
-.sw .dot:hover{transform:scale(1.15)}
-.sw .dot.on{box-shadow:0 0 0 2px var(--navy)}
-.sw .date-hint{margin-left:auto;font-size:13px;color:var(--navy);font-weight:600}
-.lines-head,.line{display:grid;grid-template-columns:minmax(0,1fr) 70px 86px 88px 30px;gap:6px;align-items:center;padding:0 14px}
-.lines-head{font-size:12px;font-weight:600;color:var(--muted);padding-bottom:3px}
-.lines-head span:nth-child(n+2){text-align:center}
-.line{margin-bottom:6px}
-.line .inp[type=number]{text-align:center}
-.line .amt{text-align:right;font-weight:600;font-variant-numeric:tabular-nums;color:var(--navy);padding-right:4px}
 .combo{position:relative;display:flex}
 .combo .inp{padding-right:30px}
 .combo .caret{position:absolute;right:2px;top:2px;bottom:2px;width:26px;border:0;background:transparent;color:var(--muted);cursor:pointer;border-radius:6px;font-size:12px}
@@ -116,21 +92,79 @@ details.more .info-grid{margin-top:10px}
 #pop button{display:flex;justify-content:space-between;gap:16px;width:100%;text-align:left;border:0;background:transparent;padding:7px 10px;border-radius:7px;cursor:pointer}
 #pop button:hover{background:#EDF1F8}
 #pop small{color:var(--muted)}
-.chips{display:flex;flex-wrap:wrap;gap:6px;padding:4px 14px 8px}
-.chip{border:1px dashed var(--line2);background:#F8FAFD;border-radius:999px;padding:3px 11px;font-size:13px;cursor:pointer;color:var(--navy);transition:background .15s,border-color .15s}
-.chip:hover{background:#fff;border-color:var(--c)}
-.chip::before{content:"+ ";color:var(--c);font-weight:700}
-.sec-foot{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;padding:10px 14px;border-top:1px solid var(--line);background:#F8FAFD;border-radius:0 0 var(--r) 0}
-.sec-foot .cars{display:flex;align-items:center;gap:8px;font-weight:600}
-.sec-foot .cars input{width:74px;text-align:center}
-.carbadge{font-size:12px;color:#8a5a00;background:#FFF3CF;border-radius:6px;padding:2px 4px 2px 8px;display:inline-flex;align-items:center;gap:6px}
-.carbadge button{border:0;background:#fff;border-radius:5px;cursor:pointer;color:var(--navy);font-size:12px;padding:1px 7px;font-weight:600}
-.sec-foot .total{margin-left:auto;font-weight:700;color:var(--navy);font-size:16px}
-.grand{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:14px;background:var(--yellow);border-radius:var(--r);color:#1B2433;margin-bottom:14px}
-.grand div small{display:block;font-size:12px;font-weight:600;opacity:.75}
-.grand div b{font-size:19px;font-variant-numeric:tabular-nums}
+.tag{font-size:12px;color:#8a5a00;background:#FFF3CF;border-radius:6px;padding:2px 8px}
 .empty{text-align:center;padding:36px 16px;color:var(--muted)}
 .tip{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:12px 16px;margin-bottom:12px;background:linear-gradient(90deg,#FFF6E6,#fff);border-color:#F6D9A8}
+
+/* แผ่นรายงาน (หน้าตาเหมือนรูปที่บันทึก) */
+.sheet-scroll{overflow-x:auto;padding-bottom:6px}
+.sheet{--L:#8EA9DB;--cols:4.5% 30% 21.9% 12.3% 14.2% 17.1%;min-width:860px;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:0 6px 24px rgba(20,32,60,.12);padding:16px 48px 20px 18px;font:14px/1.35 Tahoma,"Leelawadee UI","Noto Sans Thai","Sarabun",sans-serif;color:#111827}
+.sheet input,.sheet button{font-family:inherit}
+.sh-title{position:relative;background:var(--navy);margin-bottom:14px}
+.sh-title input{width:100%;background:transparent;border:0;outline:0;color:#fff;font-weight:700;font-size:22px;text-align:center;padding:10px 120px}
+.sh-title input:focus{background:rgba(255,255,255,.14)}
+.rst{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:0;background:rgba(255,255,255,.22);color:#fff;border-radius:6px;padding:2px 9px;cursor:pointer;font-size:12px;white-space:nowrap}
+.rst:hover{background:rgba(255,255,255,.38)}
+.sec{margin-bottom:18px}
+.sec-bar{display:flex;align-items:center;flex-wrap:wrap;gap:6px 8px;padding:2px 0 8px;font:13px/1.2 "Sarabun","Segoe UI",sans-serif;color:var(--muted)}
+.sec-bar .combo{width:150px}
+.sec-bar .combo .inp{padding:5px 28px 5px 8px}
+.sec-bar input[type=date]{border:1px solid var(--line2);border-radius:7px;padding:4px 6px;background:#fff;font:inherit;color:var(--ink)}
+.sw{display:inline-flex;gap:5px;align-items:center;margin-left:6px}
+.sw .dot{width:18px;height:18px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px var(--line2);cursor:pointer;padding:0;transition:transform .15s}
+.sw .dot:hover{transform:scale(1.18)}
+.sw .dot.on{box-shadow:0 0 0 2px var(--navy)}
+.sec-tools{margin-left:auto;display:flex;gap:2px}
+.hd{position:relative;display:flex;align-items:center;background:var(--c);color:#fff;font-weight:700;font-size:14.5px}
+.hd-no{padding:0 4px 0 12px;white-space:nowrap}
+.hd input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:#fff;font-weight:700;font-size:14.5px;padding:8px 110px 8px 4px}
+.hd input:focus{background:rgba(255,255,255,.16)}
+.row{display:grid;grid-template-columns:var(--cols);border-left:1px solid var(--L)}
+.row>.c{display:flex;align-items:center;justify-content:center;min-width:0;min-height:34px;padding:0 6px;border-right:1px solid var(--L);border-bottom:1px solid var(--L);text-align:center}
+.row.head{border-top:1px solid var(--L)}
+.row.head>.c{background:#D9D9D9;font-weight:700;min-height:30px}
+.c-txt{justify-content:flex-start!important;text-align:left!important;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block!important;line-height:34px}
+.line{position:relative}
+.rowdel{position:absolute;right:-36px;top:50%;transform:translateY(-50%);opacity:.3}
+.line:hover .rowdel,.rowdel:focus{opacity:1}
+.sheet .c input{width:100%;min-width:0;border:0;background:transparent;text-align:center;font-size:14px;padding:6px 2px;outline:0;border-radius:0}
+.sheet .c input:focus,.sheet .c .combo .inp:focus{background:#FFF8DC;box-shadow:inset 0 0 0 2px #5B7FD1}
+.sheet .c .combo{width:100%}
+.sheet .c .combo .inp{border:0;background:transparent;text-align:center;border-radius:0;padding:6px 26px 6px 6px}
+.c-amt{font-weight:600;font-variant-numeric:tabular-nums}
+.addrow{display:flex;align-items:center;flex-wrap:wrap;gap:6px 8px;padding:6px 8px;border:1px solid var(--L);border-top:0;background:#F8FAFD}
+.addbtn{display:inline-flex;align-items:center;gap:6px;border:1.5px dashed var(--c);background:#fff;color:var(--c);font-weight:700;border-radius:8px;padding:4px 14px;cursor:pointer;transition:background .15s,color .15s}
+.addbtn:hover{background:var(--c);color:#fff}
+.addbtn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2.6;stroke-linecap:round}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line2);background:#fff;border-radius:999px;padding:2px 11px;font-size:12.5px;cursor:pointer;color:var(--navy);transition:background .15s,border-color .15s}
+.chip:hover{background:#fff;border-color:var(--c)}
+.chip::before{content:"+ ";color:var(--c);font-weight:700}
+.row.tot{background:var(--navy2);color:#fff;font-weight:700;font-size:14px;border-left-color:var(--navy2)}
+.row.tot>.c{border-color:var(--navy2);min-height:38px}
+.row.tot .span3{grid-column:1/4}
+.row.tot .c input{color:#fff;font-weight:700;background:rgba(255,255,255,.14);border-radius:6px;width:72%;margin:3px 0}
+.row.tot .c input:focus{background:rgba(255,255,255,.28);box-shadow:inset 0 0 0 2px #fff}
+.carreset{border:0;background:#FFE08A;color:#6b4a00;border-radius:6px;padding:2px 7px;font-size:11.5px;cursor:pointer;font-weight:700;line-height:1.3}
+.span5{grid-column:1/6}
+.addsec{display:flex;width:100%;align-items:center;justify-content:center;gap:8px;border:2px dashed var(--line2);background:#F8FAFD;color:var(--navy);border-radius:10px;padding:12px;font-weight:700;font-size:15px;cursor:pointer;margin:4px 0 18px;transition:background .15s,border-color .15s}
+.addsec:hover{background:#EDF3FF;border-color:var(--navy)}
+.addsec svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.6;stroke-linecap:round}
+.grandblk .row{border-left-color:#E0A800}
+.grandblk .c{background:var(--yellow);border-color:#E0A800;min-height:38px;font-weight:700;font-size:15px}
+.grandblk .lab{justify-content:flex-end;padding-right:12px}
+.sheet .grandblk .c input.pct{width:54px;text-align:center;border:1px solid #D49A00;border-radius:5px;background:#FFE699;font-weight:700;font-size:14px;padding:2px;margin:0 4px}
+.sumhd{margin-top:16px;background:var(--navy);color:#fff;font-weight:700;padding:8px 12px;font-size:14px}
+.sumrows .row{border-top:0}
+.sumrows .c.left{justify-content:flex-start;padding-left:10px;text-align:left}
+.sumrows .row:first-child{border-top:1px solid var(--L)}
+.notes{margin-top:10px;font-style:italic;color:#7A8294;font-size:12.5px;line-height:1.6}
+.extra{width:100%;border:1px dashed var(--line2);border-radius:7px;padding:6px 10px;margin-top:8px;font-size:13px;background:#FBFCFE}
+.fab{position:fixed;right:22px;bottom:22px;z-index:40;display:flex;gap:8px;align-items:center;flex-wrap:wrap;background:#fff;padding:8px;border-radius:14px;box-shadow:0 8px 30px rgba(10,20,50,.3);border:1px solid var(--line)}
+dialog.big{max-width:1180px;width:calc(100% - 24px);padding:0;overflow:hidden}
+.pv-head{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--line)}
+.pv-body{max-height:80vh;overflow:auto;padding:12px;background:#E3E8F1}
+.pv-body canvas{display:block;width:100%;height:auto;background:#fff;box-shadow:0 4px 18px rgba(20,32,60,.18)}
 
 /* ---------- reports table ---------- */
 table.list{width:100%;border-collapse:collapse}
@@ -177,18 +211,16 @@ dialog .btnrow{justify-content:flex-end;margin:0}
 #toast.show{opacity:1;transform:translate(-50%,0)}
 
 @media(max-width:1100px){
-  .edit-grid,.month-grid,.set-grid{grid-template-columns:minmax(0,1fr)}
-  .pane-preview{position:static}
-  .pane-preview .card{max-height:none}
+  .month-grid,.set-grid{grid-template-columns:minmax(0,1fr)}
   .stats{grid-template-columns:repeat(2,1fr)}
   .month-grid .pv-wrap{max-height:none}
 }
 @media(max-width:560px){
   .topbar{padding:10px 12px}
-  .wrap,.edit-grid{padding-left:10px;padding-right:10px}
-  .info-grid,.sec-meta{grid-template-columns:1fr}
-  .grand{grid-template-columns:1fr 1fr}
+  .wrap,.edit-wrap{padding-left:10px;padding-right:10px}
+  .info-grid{grid-template-columns:1fr}
   .tabs{margin-left:0}
+  .fab{left:10px;right:10px;bottom:10px;justify-content:center}
 }
 </style>
 </head>
@@ -210,32 +242,30 @@ dialog .btnrow{justify-content:flex-end;margin:0}
 
 <!-- ============ TAB: ทำรายงาน ============ -->
 <section id="tab-edit" class="tab">
-  <div class="edit-grid">
-    <div class="pane-edit">
-      <div class="card bar">
-        <select id="reportPick" style="max-width:100%;flex:1;min-width:180px" aria-label="เลือกรายงาน"></select>
-        <button class="btn navy" data-act="newReport"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>รายงานใหม่</button>
-        <button class="btn" data-act="dupReport" title="คัดลอกรายงานนี้"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg>ทำซ้ำ</button>
-        <button class="btn danger" data-act="delReport" title="ลบรายงานนี้">ลบ</button>
-        <span id="saveState" class="save-state">บันทึกในเครื่องอัตโนมัติ</span>
-      </div>
-      <div id="tipCard"></div>
-      <div id="editorBody"></div>
+  <div class="edit-wrap">
+    <div class="card bar">
+      <select id="reportPick" style="max-width:100%;flex:1;min-width:180px" aria-label="เลือกรายงาน"></select>
+      <button class="btn navy" data-act="newReport"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>รายงานใหม่</button>
+      <button class="btn" data-act="dupReport" title="คัดลอกรายงานนี้"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg>ทำซ้ำ</button>
+      <button class="btn danger" data-act="delReport" title="ลบรายงานนี้">ลบ</button>
+      <button class="btn" data-act="previewImg" title="ดูรูปที่จะถูกบันทึกจริง">ดูตัวอย่างรูป</button>
+      <span id="saveState" class="save-state">บันทึกในเครื่องอัตโนมัติ</span>
     </div>
-    <div class="pane-preview">
-      <div class="card">
-        <div class="pv-bar">
-          <button class="btn cta" data-act="saveImg"><svg viewBox="0 0 24 24"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg>บันทึกเป็นรูปภาพ</button>
-          <button class="btn" data-act="copyImg" title="คัดลอกรูปไปวางใน LINE / Word ได้เลย">คัดลอกรูป</button>
-          <span class="spacer" style="flex:1"></span>
-          <select id="imgFmt" aria-label="ชนิดไฟล์"><option value="png">PNG</option><option value="jpg">JPG</option></select>
-          <select id="imgScale" aria-label="ความคมชัด"><option value="1">1x</option><option value="2" selected>2x คมชัด</option><option value="3">3x ละเอียดมาก</option></select>
-        </div>
-        <div id="pvWrap" class="pv-wrap"><canvas id="pvCanvas"></canvas></div>
-      </div>
-    </div>
+    <div id="tipCard"></div>
+    <div id="editorBody"></div>
+  </div>
+  <div class="fab">
+    <button class="btn cta" data-act="saveImg"><svg viewBox="0 0 24 24"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg>บันทึกเป็นรูปภาพ</button>
+    <button class="btn" data-act="copyImg" title="คัดลอกรูปไปวางใน LINE / Word ได้เลย">คัดลอกรูป</button>
+    <select id="imgFmt" aria-label="ชนิดไฟล์"><option value="png">PNG</option><option value="jpg">JPG</option></select>
+    <select id="imgScale" aria-label="ความคมชัด"><option value="1">1x</option><option value="2" selected>2x คมชัด</option><option value="3">3x ละเอียดมาก</option></select>
   </div>
 </section>
+
+<dialog id="pvDlg" class="big">
+  <div class="pv-head"><b>ตัวอย่างรูปที่จะถูกบันทึก</b><button class="ib" data-act="closePv" title="ปิด"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="pv-body"><canvas id="pvCanvas"></canvas></div>
+</dialog>
 
 <!-- ============ TAB: รายงานทั้งหมด ============ -->
 <section id="tab-reports" class="tab" hidden>
@@ -432,7 +462,7 @@ function normalizeReport(r){
   return{
     id:r.id||uid(), created:r.created||todayISO(), updated:upd, t0:num(r.t0)||upd,
     title:r.title!=null?r.title:s.title, team:r.team||'', showTeam:r.showTeam!==false,
-    periodOverride:r.periodOverride||'', wht:r.wht!=null?num(r.wht):s.wht,
+    periodOverride:r.periodOverride||'', titleOverride:r.titleOverride||'', wht:r.wht!=null?num(r.wht):s.wht,
     autoNote:r.autoNote!==false, extraNote:r.extraNote||'',
     sections:arr(r.sections).map(x=>({
       id:x.id||uid(), loc:x.loc||'', color:COLORS[x.color]?x.color:'navy', start:x.start||'', end:x.end||'',
@@ -499,6 +529,12 @@ function cloneReport(r){
 /* =====================================================================
    calculation
    ===================================================================== */
+/* ข้อความอัตโนมัติของหัวข้อแต่ละส่วน เช่น "ทีมไนท์เข้าซ่อม (NYB)  6/10/69" */
+function secLabels(r,sec){
+  const team=(r.team||'').trim(), loc=(sec.loc||'').trim();
+  const base=`${team}เข้าซ่อม${loc?` (${loc})`:''}`, date=fmtRange(sec.start,sec.end);
+  return{head:base+(date?'  '+date:''),row:base+(date?' '+date:''),date};
+}
 function calcReport(r){
   const secs=[];
   r.sections.forEach(sec=>{
@@ -511,11 +547,9 @@ function calcReport(r){
     });
     if(!lines.length) return;
     const hasOv=!(sec.cars===null||sec.cars===undefined||sec.cars==='');
-    const team=(r.team||'').trim(), loc=(sec.loc||'').trim();
-    const base=`${team}เข้าซ่อม${loc?` (${loc})`:''}`;
-    const date=fmtRange(sec.start,sec.end), ov=(sec.textOverride||'').trim();
-    secs.push({sec,lines,loc,date,amount:round2(amount),autoCars:auto,cars:hasOv?num(sec.cars):auto,
-      headText:ov||(base+(date?'  '+date:'')), rowText:ov||(base+(date?' '+date:''))});
+    const loc=(sec.loc||'').trim(), L=secLabels(r,sec), ov=(sec.textOverride||'').trim();
+    secs.push({sec,lines,loc,date:L.date,amount:round2(amount),autoCars:auto,cars:hasOv?num(sec.cars):auto,
+      headText:ov||L.head, rowText:ov||L.row});
   });
   const total=round2(secs.reduce((a,s)=>a+s.amount,0));
   const whtPct=num(r.wht), whtAmt=round2(total*whtPct/100), net=round2(total-whtAmt);
@@ -540,8 +574,9 @@ function calcReport(r){
   if(r.showTeam!==false&&team) titleParts.push(team);
   if(period) titleParts.push(period);
 
+  const autoTitle=titleParts.filter(Boolean).join('  ')||'รายการซ่อมสีและเคาะบุบ';
   return{secs,sections:secs,total,whtPct,whtAmt,net,cars,byLoc:[...m.values()],period,
-    startISO:minS||r.created||'',title:titleParts.filter(Boolean).join('  ')||'รายการซ่อมสีและเคาะบุบ',notes:buildNotes(r,secs,whtPct)};
+    startISO:minS||r.created||'',title:(r.titleOverride||'').trim()||autoTitle,autoTitle,notes:buildNotes(r,secs,whtPct)};
 }
 function buildNotes(r,secs,whtPct){
   const out=[];
@@ -832,46 +867,49 @@ window.addEventListener('scroll',e=>{if(!$('#pop').hidden&&!e.target.closest?.('
 document.addEventListener('keydown',e=>{if(e.key==='Escape') closePop();});
 
 /* =====================================================================
-   TAB: editor
+   TAB: ทำรายงาน — แก้ไขบนรูปรายงานโดยตรง (WYSIWYG)
+   แผ่นรายงานด้านล่างหน้าตาเหมือนรูปที่บันทึก แต่ทุกช่องกรอก/แก้ได้เลย
    ===================================================================== */
 const comboHTML=(f,list,val,ph)=>`<div class="combo"><input class="inp" data-f="${f}" data-list="${list}" value="${esc(val)}" placeholder="${esc(ph)}" autocomplete="off"><button type="button" class="caret" data-act="combo" tabindex="-1" aria-label="เลือกจากรายการ">▾</button></div>`;
+const PLUS_SVG='<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>';
 
-function lineHTML(l){
-  return `<div class="line" data-lid="${l.id}">
-    ${comboHTML('type','rates',l.type,'ประเภทช่าง')}
-    <input class="inp" type="number" inputmode="decimal" min="0" step="any" data-f="qty" value="${l.qty}" placeholder="0" aria-label="จำนวน">
-    <input class="inp" type="number" inputmode="decimal" min="0" step="any" data-f="price" value="${l.price}" placeholder="0" aria-label="ราคา/คัน">
-    <div class="amt" data-amt="${l.id}">–</div>
-    <button class="ib x" data-act="delLine" title="ลบแถว">${I.x}</button>
+function lineHTML(l,i){
+  return `<div class="row line" data-lid="${l.id}">
+    <div class="c c-no">${i+1}</div>
+    <div class="c c-txt" data-rowtext></div>
+    <div class="c">${comboHTML('type','rates',l.type,'เลือก หรือพิมพ์ประเภทช่าง')}</div>
+    <div class="c"><input type="number" inputmode="decimal" min="0" step="any" data-f="qty" value="${l.qty}" placeholder="0" aria-label="จำนวน (คัน)"></div>
+    <div class="c"><input type="number" inputmode="decimal" min="0" step="any" data-f="price" value="${l.price}" placeholder="0" aria-label="ราคา/คัน"></div>
+    <div class="c c-amt" data-amt="${l.id}">–</div>
+    <button type="button" class="ib x rowdel" data-act="delLine" title="ลบแถวนี้" aria-label="ลบแถวนี้">${I.x}</button>
   </div>`;
 }
 function sectionHTML(sec,i){
-  const swatches=Object.keys(COLORS).map(k=>`<button type="button" class="dot ${sec.color===k?'on':''}" data-act="color" data-color="${k}" style="background:${COLORS[k]}" title="${COLOR_NAMES[k]}" aria-label="สี${COLOR_NAMES[k]}"></button>`).join('');
+  const swatches=Object.keys(COLORS).map(k=>`<button type="button" class="dot ${sec.color===k?'on':''}" data-act="color" data-color="${k}" style="background:${COLORS[k]}" title="สี${COLOR_NAMES[k]}" aria-label="สี${COLOR_NAMES[k]}"></button>`).join('');
   const chips=db.settings.rates.filter(x=>x.name).slice(0,6).map(x=>`<button type="button" class="chip" data-act="chip" data-type="${esc(x.name)}">${esc(x.name)}</button>`).join('');
   return `<div class="sec" data-sid="${sec.id}" style="--c:${COLORS[sec.color]||COLORS.navy}">
-    <div class="sec-head">
-      <span class="sec-no">ส่วนที่ ${i+1}</span>
-      <span class="tag" data-empty hidden>ยังไม่มีรายการ · จะไม่แสดงในรูป</span>
-      <div class="sec-tools">
-        <button class="ib" data-act="secUp" title="เลื่อนขึ้น">${I.up}</button>
-        <button class="ib" data-act="secDown" title="เลื่อนลง">${I.down}</button>
-        <button class="ib" data-act="secDup" title="ทำซ้ำส่วนนี้">${I.copy}</button>
-        <button class="ib del" data-act="secDel" title="ลบส่วนนี้">${I.trash}</button>
-      </div>
+    <div class="sec-bar">
+      <span>สถานที่</span>${comboHTML('loc','locations',sec.loc,'เช่น NYB')}
+      <span>วันที่</span><input type="date" data-f="start" value="${esc(sec.start)}" aria-label="วันที่">
+      <span>ถึง</span><input type="date" data-f="end" value="${esc(sec.end)}" aria-label="ถึงวันที่ (ถ้ามี)">
+      <span class="sw">${swatches}</span>
+      <span class="tag" data-empty hidden>ยังไม่มีรายการ · ไม่แสดงในรูป</span>
+      <span class="sec-tools">
+        <button type="button" class="ib" data-act="secUp" title="เลื่อนส่วนนี้ขึ้น">${I.up}</button>
+        <button type="button" class="ib" data-act="secDown" title="เลื่อนส่วนนี้ลง">${I.down}</button>
+        <button type="button" class="ib" data-act="secDup" title="ทำซ้ำส่วนนี้">${I.copy}</button>
+        <button type="button" class="ib del" data-act="secDel" title="ลบส่วนนี้">${I.trash}</button>
+      </span>
     </div>
-    <div class="sec-meta">
-      <div><label class="fld">สถานที่</label>${comboHTML('loc','locations',sec.loc,'เช่น NYB')}</div>
-      <div><label class="fld">วันที่</label><input class="inp" type="date" data-f="start" value="${esc(sec.start)}"></div>
-      <div><label class="fld">ถึงวันที่ (ถ้ามี)</label><input class="inp" type="date" data-f="end" value="${esc(sec.end)}"></div>
-    </div>
-    <div class="sw"><span class="hint">สีแถบ</span>${swatches}<span class="date-hint" data-hint></span></div>
-    <div class="lines-head"><span>ประเภทช่าง</span><span>จำนวน</span><span>ราคา/คัน</span><span style="text-align:right;padding-right:4px">รวม</span><span></span></div>
+    <div class="hd"><span class="hd-no">ส่วนที่ <span data-no>${i+1}</span> :</span><input data-f="textOverride" aria-label="ชื่อหัวข้อส่วนนี้" spellcheck="false"><button type="button" class="rst" data-act="resetText" hidden title="กลับไปใช้ข้อความอัตโนมัติ (ทีม/สถานที่/วันที่)">↺ อัตโนมัติ</button></div>
+    <div class="row head"><div class="c">#</div><div class="c">รายการ</div><div class="c">ประเภทช่าง</div><div class="c">จำนวน (คัน)</div><div class="c">ราคา/คัน (B)</div><div class="c">รวม (B)</div></div>
     <div class="lines">${sec.lines.map(lineHTML).join('')}</div>
-    <div class="chips">${chips}<button type="button" class="chip" data-act="addLine">แถวว่าง</button></div>
-    <div class="sec-foot">
-      <div class="cars">รวมคัน <input class="inp" type="number" min="0" step="any" data-f="cars" aria-label="รวมจำนวนคัน (ตามที่จดไว้)"></div>
-      <span class="carbadge" data-carbadge hidden>จดเอง · อัตโนมัติ = <b>0</b><button type="button" data-act="resetCars">ใช้ค่าอัตโนมัติ</button></span>
-      <div class="total">รวม <span data-secamt>0</span> บาท</div>
+    <div class="addrow"><button type="button" class="addbtn" data-act="addLine">${PLUS_SVG}เพิ่มรายการ</button><span class="chips">${chips}</span></div>
+    <div class="row tot">
+      <div class="c span3">รวม</div>
+      <div class="c"><input type="number" min="0" step="any" data-f="cars" aria-label="รวมจำนวนคัน (ตามที่จดไว้)"></div>
+      <div class="c"><button type="button" class="carreset" data-carbadge data-act="resetCars" hidden title="ตอนนี้เป็นตัวเลขที่จดเอง กดเพื่อกลับไปใช้ค่าที่คำนวณอัตโนมัติ">↺ อัตโนมัติ <span data-autocars>0</span></button></div>
+      <div class="c" data-secamt>0</div>
     </div>
   </div>`;
 }
@@ -879,33 +917,41 @@ function reportInfoHTML(r){
   return `<div class="card pad" style="margin-bottom:14px">
     <div class="info-grid">
       <div><label class="fld">ทีม</label>${comboHTML('team','teams',r.team,'เช่น ทีมอั้ม')}</div>
-      <div><label class="fld">หัก ณ ที่จ่าย (%)</label><input class="inp" type="number" min="0" step="any" data-f="wht" value="${r.wht}"></div>
+      <div><label class="fld">หัวข้อรายงาน</label><input class="inp" data-f="title" value="${esc(r.title)}"></div>
+      <div><label class="chk"><input type="checkbox" data-f="showTeam" ${r.showTeam?'checked':''}>แสดงชื่อทีมในหัวข้อรูป</label></div>
+      <div><label class="chk"><input type="checkbox" data-f="autoNote" ${r.autoNote?'checked':''}>ใส่หมายเหตุเรท/หัก ณ ที่จ่ายท้ายรูป</label></div>
     </div>
-    <details class="more"><summary>ตัวเลือกหัวข้อ / หมายเหตุ</summary>
-      <div class="info-grid">
-        <div class="full"><label class="fld">หัวข้อรายงาน</label><input class="inp" data-f="title" value="${esc(r.title)}"></div>
-        <div><label class="chk"><input type="checkbox" data-f="showTeam" ${r.showTeam?'checked':''}>แสดงชื่อทีมในหัวข้อ</label></div>
-        <div><label class="chk"><input type="checkbox" data-f="autoNote" ${r.autoNote?'checked':''}>ใส่หมายเหตุเรท/หัก 3% ท้ายรูป</label></div>
-        <div class="full"><label class="fld">ช่วงวันที่ในหัวข้อ (เว้นว่าง = คำนวณจากวันที่ของแต่ละส่วน)</label><input class="inp" data-f="periodOverride" value="${esc(r.periodOverride)}" placeholder="เช่น 6 - 11/10/69"></div>
-        <div class="full"><label class="fld">หมายเหตุเพิ่มเติม</label><input class="inp" data-f="extraNote" value="${esc(r.extraNote)}"></div>
-      </div>
+    <details class="more"><summary>ตัวเลือกเพิ่มเติม</summary>
+      <div class="info-grid"><div class="full"><label class="fld">ช่วงวันที่ในหัวข้อ (เว้นว่าง = คำนวณจากวันที่ของแต่ละส่วน)</label><input class="inp" data-f="periodOverride" value="${esc(r.periodOverride)}" placeholder="เช่น 6 - 11/10/69"></div></div>
     </details>
   </div>`;
 }
 function renderEditor(){
   const r=cur(), body=$('#editorBody');
   renderPicker();
-  if(!r){body.innerHTML='<div class="card empty">ยังไม่มีรายงาน<br><br><button class="btn navy" data-act="newReport">สร้างรายงานใหม่</button></div>';renderTip();schedulePreview();return;}
-  body.innerHTML=reportInfoHTML(r)+r.sections.map(sectionHTML).join('')+
-    `<div class="grand" id="grandBar"></div>
-     <button class="btn navy" data-act="addSection" style="width:100%;justify-content:center;padding:11px">${I.plus.replace('<svg','<svg style="width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round"')}เพิ่มส่วนใหม่ (สถานที่/วันที่อื่น)</button>`;
-  renderTip(); updateComputed(); schedulePreview();
+  if(!r){body.innerHTML='<div class="card empty">ยังไม่มีรายงาน<br><br><button class="btn navy" data-act="newReport">สร้างรายงานใหม่</button></div>';renderTip();return;}
+  body.innerHTML=reportInfoHTML(r)+
+    `<div class="sheet-scroll"><div class="sheet">
+      <div class="sh-title"><input data-f="titleOverride" aria-label="หัวข้อรายงาน (แก้ไขได้)" spellcheck="false"><button type="button" class="rst" data-act="resetTitle" hidden title="กลับไปใช้หัวข้ออัตโนมัติ (หัวข้อ + ทีม + ช่วงวันที่)">↺ อัตโนมัติ</button></div>
+      <div id="secs">${r.sections.map(sectionHTML).join('')}</div>
+      <button type="button" class="addsec" data-act="addSection">${PLUS_SVG}เพิ่มส่วนที่ <span data-nextno>2</span></button>
+      <div class="grandblk">
+        <div class="row"><div class="c lab span5">รวมยอดทั้งหมด</div><div class="c" data-g="total">0</div></div>
+        <div class="row"><div class="c lab span5">รวมยอดหัก<input class="pct" type="number" min="0" step="any" data-f="wht" value="${r.wht}" aria-label="หัก ณ ที่จ่าย (%)">%</div><div class="c" data-g="wht">0</div></div>
+        <div class="row"><div class="c lab span5">รวมยอด</div><div class="c" data-g="net">0</div></div>
+      </div>
+      <div class="sumhd">สรุปจำนวนคัน (ตามที่จดไว้)</div>
+      <div class="sumrows" id="sumRows"></div>
+      <div class="notes" id="noteLines"></div>
+      <input class="extra" data-f="extraNote" value="${esc(r.extraNote)}" placeholder="+ พิมพ์หมายเหตุเพิ่มเติมท้ายรูป (ไม่บังคับ)">
+    </div></div>`;
+  renderTip(); updateComputed();
 }
 function renderTip(){
-  const r=cur(), el=$('#tipCard'), s=db.settings;
+  const el=$('#tipCard'), s=db.settings;
   const blank=!db.reports.some(x=>calcReport(x).secs.length);
   if(blank&&!s.tipHidden){
-    el.innerHTML=`<div class="card tip"><div style="flex:1;min-width:200px"><b>เริ่มต้นใช้งาน</b><div class="hint">กรอกข้อมูลทางซ้าย → ดูรูปรายงานทางขวา → กด “บันทึกเป็นรูปภาพ”  ·  อยากดูตัวอย่างก่อน? เพิ่มข้อมูลจากรูปที่ให้มาได้เลย</div></div><button class="btn navy" data-act="loadSample">เพิ่มข้อมูลตัวอย่าง</button><button class="ib" data-act="hideTip" title="ซ่อน">${I.x}</button></div>`;
+    el.innerHTML=`<div class="card tip"><div style="flex:1;min-width:200px"><b>เริ่มต้นใช้งาน</b><div class="hint">กรอกลงในรูปรายงานด้านล่างได้เลย — กด “เพิ่มรายการ” เพื่อเพิ่มแถว กด “เพิ่มส่วน” เพื่อเพิ่มส่วนที่ 2, 3, 4 … คลิกชื่อหัวข้อเพื่อแก้ไข แล้วกด “บันทึกเป็นรูปภาพ”  ·  อยากดูตัวอย่างก่อน? เพิ่มข้อมูลจากรูปที่ให้มาได้เลย</div></div><button class="btn navy" data-act="loadSample">เพิ่มข้อมูลตัวอย่าง</button><button class="ib" data-act="hideTip" title="ซ่อน">${I.x}</button></div>`;
   }else el.innerHTML='';
 }
 function reportLabel(r,rc){
@@ -917,37 +963,47 @@ function renderPicker(){
   const items=db.reports.map(r=>({r,rc:calcReport(r)})).sort((a,b)=>b.rc.startISO.localeCompare(a.rc.startISO));
   sel.innerHTML=items.map(({r,rc})=>`<option value="${r.id}" ${r.id===db.currentId?'selected':''}>${esc(reportLabel(r,rc))}</option>`).join('');
 }
+/* อัปเดตตัวเลข/ข้อความที่คำนวณอัตโนมัติบนแผ่นรายงาน (ไม่แตะช่องที่ผู้ใช้กำลังพิมพ์อยู่) */
 function updateComputed(){
   const r=cur(); if(!r) return;
-  const rc=calcReport(r), byId=new Map(rc.secs.map(s=>[s.sec.id,s]));
+  const rc=calcReport(r), byId=new Map(rc.secs.map(s=>[s.sec.id,s])), act=document.activeElement;
+  const setIn=(el,v)=>{if(el&&act!==el) el.value=v;};
+  const root=$('#editorBody');
+  setIn(root.querySelector('[data-f="titleOverride"]'),rc.title);
+  const tr=root.querySelector('[data-act="resetTitle"]'); if(tr) tr.hidden=!(r.titleOverride||'').trim();
+  let n=0;
   r.sections.forEach(sec=>{
-    const el=$(`.sec[data-sid="${sec.id}"]`); if(!el) return;
-    const s=byId.get(sec.id);
-    sec.lines.forEach(l=>{
-      const a=el.querySelector(`[data-amt="${l.id}"]`);
-      if(a){const q=num(l.qty);a.textContent=q>0?fmt(q*num(l.price)):'–';}
+    const el=root.querySelector(`.sec[data-sid="${sec.id}"]`); if(!el) return;
+    const s=byId.get(sec.id), L=secLabels(r,sec), ov=(sec.textOverride||'').trim();
+    if(s) n++;
+    el.querySelector('[data-no]').textContent=s?n:n+1;
+    setIn(el.querySelector('[data-f="textOverride"]'),ov?sec.textOverride:L.head);
+    el.querySelector('[data-act="resetText"]').hidden=!ov;
+    const rowTxt=ov||L.row;
+    $$('.line',el).forEach((le,i)=>{
+      le.querySelector('.c-no').textContent=i+1;
+      const rt=le.querySelector('[data-rowtext]'); rt.textContent=rowTxt; rt.title=rowTxt;
+      const l=sec.lines.find(x=>x.id===le.dataset.lid), a=le.querySelector('[data-amt]');
+      if(l){const q=num(l.qty);a.textContent=q>0?fmt(q*num(l.price)):'–';}
     });
     el.querySelector('[data-secamt]').textContent=fmt(s?s.amount:0);
     const auto=s?s.autoCars:0, ci=el.querySelector('[data-f="cars"]');
     const hasOv=!(sec.cars===null||sec.cars===undefined||sec.cars==='');
-    if(!hasOv&&document.activeElement!==ci) ci.value=auto;
-    const b=el.querySelector('[data-carbadge]'); b.hidden=!hasOv; if(hasOv) b.querySelector('b').textContent=fmt(auto);
+    if(!hasOv) setIn(ci,auto);
+    const b=el.querySelector('[data-carbadge]'); b.hidden=!hasOv; if(hasOv) b.querySelector('[data-autocars]').textContent=fmt(auto);
     el.querySelector('[data-empty]').hidden=!!s;
-    const d=fmtRange(sec.start,sec.end); el.querySelector('[data-hint]').textContent=d?'แสดงในรูป: '+d:'';
   });
-  const g=$('#grandBar');
-  if(g) g.innerHTML=`<div><small>รวมยอดทั้งหมด</small><b>${fmt(rc.total)}</b></div><div><small>หัก ${fmt(rc.whtPct)}%</small><b>${fmt(rc.whtAmt)}</b></div><div><small>รวมยอด (สุทธิ)</small><b>${fmt(rc.net)}</b></div><div><small>รวมรถซ่อม (คัน)</small><b>${fmt(rc.cars)}</b></div>`;
+  const nx=root.querySelector('[data-nextno]'); if(nx) nx.textContent=n+1;
+  const g=k=>root.querySelector(`[data-g="${k}"]`);
+  if(g('total')){g('total').textContent=fmt(rc.total);g('wht').textContent=fmt(rc.whtAmt);g('net').textContent=fmt(rc.net);}
+  const sr=$('#sumRows');
+  if(sr) sr.innerHTML=rc.byLoc.map(l=>`<div class="row"><div class="c span3 left" style="grid-column:1/4">${esc(l.label)}</div><div class="c" style="font-weight:700">${fmt(l.cars)}</div><div class="c left">คัน</div><div class="c"></div></div>`).join('')
+    +`<div class="row"><div class="c span3 left" style="grid-column:1/4;font-weight:700">รวมรถซ่อมทั้งหมด</div><div class="c" style="font-weight:700">${fmt(rc.cars)}</div><div class="c left">คัน</div><div class="c"></div></div>`;
+  const nl=$('#noteLines'); if(nl) nl.innerHTML=rc.notes.map(t=>`<div>${esc(t)}</div>`).join('');
   const o=$('#reportPick option:checked'); if(o) o.textContent=reportLabel(r,rc);
 }
-function touch(){const r=cur(); if(r) changed(r); else persist(); updateComputed(); schedulePreview();}
+function touch(){const r=cur(); if(r) changed(r); else persist(); updateComputed();}
 
-let pvRaf=0;
-function schedulePreview(){cancelAnimationFrame(pvRaf);pvRaf=requestAnimationFrame(renderPreview);}
-function renderPreview(){
-  const r=cur(), cv=$('#pvCanvas'); if(!r) return;
-  const rc=calcReport(r), wrapW=$('#pvWrap').clientWidth-24||800, dpr=window.devicePixelRatio||1;
-  paintTo(cv,P=>drawReport(P,rc),Math.max(.5,Math.min(3,wrapW/W*dpr)));
-}
 function setSecColor(sec,color){
   sec.color=color;
   const el=$(`.sec[data-sid="${sec.id}"]`); if(!el) return;
@@ -980,9 +1036,12 @@ editor.addEventListener('input',e=>{
     }else if(f==='loc'){
       sec.loc=t.value; const L=db.settings.locations.find(x=>x.name===t.value.trim());
       if(L&&L.color!==sec.color) setSecColor(sec,L.color);
+    }else if(f==='textOverride'){
+      sec.textOverride=(t.value.trim()===''||t.value===secLabels(r,sec).head)?'':t.value;
     }else sec[f]=t.value;
   }else if(f==='showTeam'||f==='autoNote') r[f]=t.checked;
   else if(f==='wht') r.wht=num(t.value);
+  else if(f==='titleOverride') r.titleOverride=(t.value.trim()===''||t.value===calcReport(r).autoTitle)?'':t.value;
   else r[f]=t.value;
   touch();
 });
@@ -992,7 +1051,25 @@ editor.addEventListener('change',e=>{
   if(t.dataset.f==='loc'){const sec=r.sections.find(s=>s.id===t.closest('.sec').dataset.sid);learn('locations',t.value,sec&&sec.color);}
   if(t.dataset.f==='start'||t.dataset.f==='end') {renderPicker();}
 });
-editor.addEventListener('focusout',e=>{if(e.target.dataset&&e.target.dataset.f==='cars') updateComputed();});
+editor.addEventListener('focusout',e=>{
+  const f=e.target.dataset&&e.target.dataset.f;
+  if(f==='cars'||f==='textOverride'||f==='titleOverride') updateComputed();
+});
+/* Enter = ไปช่องถัดไป (Enter ที่ช่องราคาของแถวสุดท้าย = เพิ่มแถวใหม่) */
+editor.addEventListener('keydown',e=>{
+  if(e.key!=='Enter') return;
+  const t=e.target, f=t.dataset&&t.dataset.f, le=t.closest&&t.closest('.line'); if(!le) return;
+  if(f==='type'){e.preventDefault();le.querySelector('[data-f="qty"]').focus();}
+  else if(f==='qty'){e.preventDefault();le.querySelector('[data-f="price"]').focus();}
+  else if(f==='price'){
+    e.preventDefault();
+    const nxt=le.nextElementSibling;
+    if(nxt&&nxt.classList.contains('line')) nxt.querySelector('[data-f="type"]').focus();
+    else if(num(le.querySelector('[data-f="qty"]').value)>0){
+      const r=cur(), sec=r&&r.sections.find(s=>s.id===le.closest('.sec').dataset.sid); if(sec) addLine(sec,'');
+    }
+  }
+});
 
 function focusLine(secId,lineId,field){
   const el=$(`.sec[data-sid="${secId}"] .line[data-lid="${lineId}"] [data-f="${field}"]`); if(el){el.focus();if(el.select) el.select();}
@@ -1001,8 +1078,7 @@ function addLine(sec,type){
   const rt=type?rateOf(type):null;
   const ln={id:uid(),type:type||'',qty:'',price:rt?rt.price:''};
   sec.lines.push(ln);
-  const secEl=$(`.sec[data-sid="${sec.id}"] .lines`);
-  secEl.insertAdjacentHTML('beforeend',lineHTML(ln));
+  $(`.sec[data-sid="${sec.id}"] .lines`).insertAdjacentHTML('beforeend',lineHTML(ln,sec.lines.length-1));
   touch(); focusLine(sec.id,ln.id,type?'qty':'type');
 }
 
@@ -1037,6 +1113,15 @@ document.addEventListener('click',async e=>{
     case 'chip': if(sec) addLine(sec,b.dataset.type); break;
     case 'delLine':{ if(!sec) break; const lid=b.closest('.line').dataset.lid; sec.lines=sec.lines.filter(l=>l.id!==lid); b.closest('.line').remove(); touch(); break; }
     case 'resetCars': if(sec){sec.cars=null;touch();} break;
+    case 'resetText': if(sec){sec.textOverride='';touch();} break;
+    case 'resetTitle': if(r){r.titleOverride='';touch();} break;
+    case 'previewImg':{
+      if(!r) break; const rc=calcReport(r);
+      if(!rc.secs.length){toast('ยังไม่มีรายการ — กรอกจำนวนอย่างน้อย 1 แถวก่อน');break;}
+      const dlg=$('#pvDlg'); dlg.showModal();
+      const wrapW=$('#pvDlg .pv-body').clientWidth-24||900, dpr=window.devicePixelRatio||1;
+      paintTo($('#pvCanvas'),P=>drawReport(P,rc),Math.max(.5,Math.min(3,wrapW/W*dpr))); break; }
+    case 'closePv': $('#pvDlg').close(); break;
     case 'hideTip': db.settings.tipHidden=true; persist(); renderTip(); break;
     case 'saveImg': await saveReportImage(); break;
     case 'copyImg': await copyReportImage(); break;
@@ -1530,7 +1615,6 @@ function showTab(name){
   $$('.tab').forEach(t=>t.hidden=t.id!=='tab-'+name);
   $$('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.tab===name));
   closePop();
-  if(name==='edit') schedulePreview();
   if(name==='reports') renderReports();
   if(name==='month') renderMonth();
   if(name==='settings') renderSettings();
@@ -1539,9 +1623,8 @@ $('#tabs').addEventListener('click',e=>{const b=e.target.closest('button[data-ta
 
 let lastW=0;
 new ResizeObserver(()=>{
-  const w=$('#pvWrap').clientWidth+'|'+$('#mvWrap').clientWidth;
+  const w=String($('#mvWrap').clientWidth);
   if(w===lastW) return; lastW=w;
-  if(activeTab==='edit') schedulePreview();
   if(activeTab==='month') renderMonthPreview();
 }).observe(document.body);
 
